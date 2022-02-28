@@ -1,13 +1,3 @@
-"let g:netrw_banner = 0 " Hide banner
-"let g:netrw_liststyle = 3 " There are four different view types: thin, long, wide and tree
-"let g:netrw_browse_split = 4 " open in previous window
-"let g:netrw_altv = 1
-"let g:netrw_winsize = 25 " The width of the directory - sets the width to 25% of the page
-"augroup ProjectDrawer
-"  autocmd!
-"  autocmd VimEnter * :Vexplore " opens netrw in a vertical split
-"augroup END
-
 " === Main Block ===
 syntax enable           " Enable syntax highlighting
 set number              " Показывать номера строк
@@ -72,24 +62,6 @@ let g:fzf_layout = { 'right': '40%' }
 
 " === Настройка плагина NERDTree для показа скрытых файлов
 let NERDTreeShowHidden=1
-
-"=============== Настройки плагина Syntastic ===============
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
-"let g:syntastic_loc_list_height = 5
-
-"let g:syntastic_echo_current_error=1
-"let g:syntastic_cursor_columns=1
-"let g:syntastic_enable_highlighting=1
-"let g:syntastic_enable_balloons=1
-
-"let g:syntastic_error_symbol = "✗"
-"let g:syntastic_warning_symbol = "⚠"
 
 "=============== Тема для плагина Airline =====================
 let g:airline_theme='base16'
