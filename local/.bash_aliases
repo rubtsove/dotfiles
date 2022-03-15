@@ -1,6 +1,5 @@
 ### Custom aliases
-alias d1='clear && echo "---LSBLK---" && lsblk -e 7 && echo "---PVS---" && pvs &&\
-echo "---VGS---" && vgs && echo "---LVS---" && lvs && echo "---DUF---" && duf -only local'
+alias d1='clear && echo "---LSBLK---" && lsblk -e 7 && echo "---PVS---" && pvs && echo "---VGS---" && vgs && echo "---LVS---" && lvs && echo "---DUF---" && duf -only local'
 alias lvm='clear && vgs && echo && lvs'
 alias c='clear'
 alias du1='du -ha --max-depth=1 | sort -rh|head'
