@@ -3,6 +3,7 @@ export EDITOR="/usr/bin/vim" # редактор по-молчанию - VIM
 export PATH=$PATH:/usr/local/bin/ # все бинарники складываю в эту папку
 export CHEAT_CONFIG_PATH="~/.dotfiles/cheat/conf.yml" # настройка по умолчанию для программы cheat
 export CHEAT_USE_FZF=true # совместимость с FZF
+export PS1='\n[\u@\H] \A \w \$ '
 
 if [ -z "${OS_VER}" ];then
   export OS_VER="$(hostnamectl |grep -i "operating"|awk '{print tolower($3)}')"
@@ -42,13 +43,6 @@ shopt -s autocd # переход в нужную папку без команд�
 shopt -s direxpand # расширяет переменные среды по нажатию Tab
 shopt -s checkjobs # параметр останавливает выход из сеанса, если в фоновом режиме ещё выполняются задания
 shopt -s histverify # Опция histverify позволяет сначала посмотреть, как Bash интерпретирует команду до того, как он на самом деле запустится
-
-### Custom PS1
-if [[ "$(id -u)" == 0 ]]; then
-  export PS1='\n\e[1;32m[\u\e[m@\e[1;32m\h]\e[m \e[1;33m\A\e[m \e[1;36m[\w]\e[m \e[1;35m\$\e[m '
-else
-  export PS1='\n\e[1;32m[\u\e[m@\e[1;32m\h]\e[m \e[1;33m\A\e[m \e[1;36m[\w]\e[m \$ '
-fi
 
 ### FZF show hidden filesvim 
 export FZF_DEFAULT_COMMAND="find -L"
