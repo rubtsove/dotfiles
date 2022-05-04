@@ -3,7 +3,7 @@ export EDITOR="/usr/bin/vim" # редактор по-молчанию - VIM
 export PATH=$PATH:/usr/local/bin/ # все бинарники складываю в эту папку
 export CHEAT_CONFIG_PATH="~/.dotfiles/cheat/conf.yml" # настройка по умолчанию для программы cheat
 export CHEAT_USE_FZF=true # совместимость с FZF
-export PS1='\n[\u@\H] \A \w \$ '
+export PS1='\n[\u@\H] \A \w \$'
 
 if [ -z "${OS_VER}" ];then
   export OS_VER="$(hostnamectl |grep -i "operating"|awk '{print tolower($3)}')"
