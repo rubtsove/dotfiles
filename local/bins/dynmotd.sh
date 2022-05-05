@@ -38,7 +38,7 @@ processes="$(ps aux | wc -l)"
 INTERFACE="$(ip -4 ad | grep 'state UP' | awk -F ":" '!/^[0-9]*: ?lo/ {print $2}')"
 
 #Services
-FIREWALL="firewalld,iptables,nftables"
+FIREWALL="firewalld,iptables,nftables,ufw"
 
 Field_Separator="$IFS"
 ################ Конец блока переменных
