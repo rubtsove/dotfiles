@@ -46,6 +46,10 @@ shopt -s histverify # Опция histverify позволяет сначала п
 
 ### FZF show hidden filesvim 
 export FZF_DEFAULT_COMMAND="find -L"
+#export FZF_DEFAULT_OPTS='--no-height --no-reverse'
+export FZF_CTRL_R_OPTS='--sort --exact'
+export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
+
 
 ### FZF systemctl
 if [[ -f "$HOME"/.fuzzy-sys.plugin.sh ]];then
