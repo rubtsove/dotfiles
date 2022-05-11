@@ -1,5 +1,6 @@
 [flags]
-tree = true # процессы в виде дерева
+#tree = true # процессы в виде дерева
+process_command = true # модуль процессы - развернута команда
 default_widget_type = "proc" # виджето по умолчнию - процессы
 battery = false # отключение виджета батарея
 left_legend = true  # расположение агрегатора CPU слева
