@@ -99,7 +99,7 @@ done
 IFS="$Field_Separator"
 echo 
 repeat "-"
-if [[ "${OS_VER}" == "centos" ]] | [[ "${OS_VER}" == "rocky" ]]; then
+if [[ "${OS_VER}" == "centos" ]] || [[ "${OS_VER}" == "rocky" ]]; then
   echo -ne "${GREY}SEStatus:${NOFORMAT}\n"
   sestatus |grep -E "SELinux status|mode"
   repeat "-"
