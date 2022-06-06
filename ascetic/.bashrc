@@ -3,7 +3,10 @@ export PATH=$PATH:/usr/local/bin/
 export PS1='\n[\u@\H] \A \w \$'
 
 [ -f "$HOME"/.bash_aliases ] && . "$HOME"/.bash_aliases
-[ -f "$HOME"/.dircolors ] && . "$HOME"/.dircolors
+#[ -f "$HOME"/.dircolors ] && . "$HOME"/.dircolors
+if [[ -f $(which lscolors) ]] && [[ -f $(which vivid) ]] ;then
+  export LS_COLORS="$(vivid generate molokai)"
+fi
 
 #if [ -f "$HOME"/.bash_aliases ]; then
 #    . "$HOME"/.bash_aliases
