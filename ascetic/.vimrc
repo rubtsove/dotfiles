@@ -26,7 +26,3 @@ set tabstop=4           " количество пробелов, которым�
 set softtabstop=4       " количество пробелов, которыми символ табуляции отображается при добавлении
 
 set ffs=unix            " For non-Unix style line-endings, the carriage return character \r will be displayed explicitly in vim as ^M
-"set list                "
-"set listchars=eol:¶     "
-"set encoding=utf-8      "
-"set fileencoding=utf-8  "
