@@ -5,7 +5,7 @@ export PS1='\n[\u@\H] \A \w \$'
 [ -f "$HOME"/.bash_aliases ] && . "$HOME"/.bash_aliases
 
 if [[ -f $(which lscolors) ]] && [[ -f $(which vivid) ]] ;then
-  export LS_COLORS="$(vivid generate molokai)"
+  export LS_COLORS="$(vivid generate gruvbox-dark-hard)"
 fi
 
 if [[ -d /etc/bash_completion.d/ ]];then

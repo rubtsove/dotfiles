@@ -12,6 +12,7 @@ alias rm='rm -rv'
 alias mkdir='mkdir -p'
 alias vim='vim -O'
 alias e='ls -lha --color=auto --group-directories-first'
+alias ls='ls --color=auto'
 alias brc='source ~/.bashrc'
 alias tree1='find . | sort | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"'
 alias tree2="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'"
