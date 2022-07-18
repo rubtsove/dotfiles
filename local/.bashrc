@@ -3,7 +3,22 @@ export EDITOR="/usr/bin/vim" # редактор по-молчанию - VIM
 export PATH=$PATH:/usr/local/bin/ # все бинарники складываю в эту папку
 export CHEAT_CONFIG_PATH="~/.dotfiles/cheat/conf.yml" # настройка по умолчанию для программы cheat
 export CHEAT_USE_FZF=true # совместимость с FZF
-export PS1='\n[\u@\H] \A \w \$'
+#export PS1='\n[\u@\H] \A \w \$'
+
+if [ $(id -u) -eq 0 >/dev/null  2>&1 ]; then
+  PS1='\n[\[\e[1;31m\]\u@\H\[\e[m\]] \A [\w] \[\e[1;33m\]\$ \[\e[m\]'
+else
+  PS1='\n[\[\e[1;32m\]\u@\H\[\e[m\]] \A [\w] \[\e[1;33m\]\$ \[\e[m\]'
+fi
+
+[ -f "$HOME"/.bash_aliases ] && . "$HOME"/.bash_aliases
+
+LSCOLORS=/usr/local/bin/lscolors
+VIVID=/usr/local/bin/vivid
+if [[ -f "${LSCOLORS}" ]] && [[ -f "${VIVID}" ]] ;then
+  export LS_COLORS="$(vivid generate gruvbox-dark-hard)"
+fi
+unset LSCOLORS VIVID
 
 if [ -z "${OS_VER}" ];then
   export OS_VER="$(hostnamectl |grep -i "operating"|awk '{print tolower($3)}')"

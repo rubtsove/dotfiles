@@ -1,16 +1,31 @@
 export EDITOR="/usr/bin/vim"
 export PATH=$PATH:/usr/local/bin/
-export PS1='\n[\u@\H] \A \w \$'
+#export PS1='\n[\u@\H] \A \w \$'
+
+if [ $(id -u) -eq 0 >/dev/null  2>&1 ]; then
+  PS1='\n[\[\e[1;31m\]\u@\H\[\e[m\]] \A [\w] \[\e[1;33m\]\$ \[\e[m\]'
+else
+  PS1='\n[\[\e[1;32m\]\u@\H\[\e[m\]] \A [\w] \[\e[1;33m\]\$ \[\e[m\]'
+fi
+
 
 [ -f "$HOME"/.bash_aliases ] && . "$HOME"/.bash_aliases
 
-if [[ -f $(which lscolors) ]] && [[ -f $(which vivid) ]] ;then
+LSCOLORS=/usr/local/bin/lscolors
+VIVID=/usr/local/bin/vivid
+if [[ -f "${LSCOLORS}" ]] && [[ -f "${VIVID}" ]] ;then
   export LS_COLORS="$(vivid generate gruvbox-dark-hard)"
 fi
+unset LSCOLORS VIVID
+
+#[ -f $(/usr/bin/which lscolors) ] && [ -f $(/usr/bin/which vivid) ] && 
+#if [[ -f $(/usr/bin/which lscolors) ]] && [[ -f $(/usr/bin/which vivid) ]] ;then
+#  export LS_COLORS="$(vivid generate gruvbox-dark-hard)"
+#fi
 
 if [[ -d /etc/bash_completion.d/ ]];then
   for file in /etc/bash_completion.d/* ; do
-  . ${file}
+  . ${file} 2>/dev/null
   done
 fi
 unset file
