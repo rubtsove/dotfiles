@@ -1,18 +1,20 @@
-### custom exports ###
-export EDITOR="/usr/bin/vim" # редактор по-молчанию - VIM
-export PATH=$PATH:/usr/local/bin/ # все бинарники складываю в эту папку
-export CHEAT_CONFIG_PATH="~/.dotfiles/cheat/conf.yml" # настройка по умолчанию для программы cheat
-export CHEAT_USE_FZF=true # совместимость с FZF
-#export PS1='\n[\u@\H] \A \w \$'
+export EDITOR="/usr/bin/vim"
+export PATH=$PATH:/usr/local/bin/
 
+##### CUSTOM PS1
+#export PS1='\n[\u@\H] \A \w \$' - внутри зашита эта строка
+# \[\e[1;32m\] - open tag
+# \[\e[m\]     - close tag
 if [ $(id -u) -eq 0 >/dev/null  2>&1 ]; then
-  PS1='\n[\[\e[1;31m\]\u@\H\[\e[m\]] \A [\w] \[\e[1;33m\]\$ \[\e[m\]'
+  export PS1='\n[\[\e[1;31m\]\u@\H\[\e[m\]] \A \[\e[1;36m\][\w]\[\e[m\] \[\e[1;33m\]\$ \[\e[m\]'
 else
-  PS1='\n[\[\e[1;32m\]\u@\H\[\e[m\]] \A [\w] \[\e[1;33m\]\$ \[\e[m\]'
+  export PS1='\n[\[\e[1;32m\]\u@\H\[\e[m\]] \A \[\e[1;36m\][\w]\[\e[m\] \[\e[1;33m\]\$ \[\e[m\]'
 fi
 
+#### bash_aliases block
 [ -f "$HOME"/.bash_aliases ] && . "$HOME"/.bash_aliases
 
+#### LSCOLORS block
 LSCOLORS=/usr/local/bin/lscolors
 VIVID=/usr/local/bin/vivid
 if [[ -f "${LSCOLORS}" ]] && [[ -f "${VIVID}" ]] ;then
@@ -20,18 +22,15 @@ if [[ -f "${LSCOLORS}" ]] && [[ -f "${VIVID}" ]] ;then
 fi
 unset LSCOLORS VIVID
 
-if [ -z "${OS_VER}" ];then
-  export OS_VER="$(hostnamectl |grep -i "operating"|awk '{print tolower($3)}')"
-fi
+#[ -f $(/usr/bin/which lscolors) ] && [ -f $(/usr/bin/which vivid) ] && 
+#if [[ -f $(/usr/bin/which lscolors) ]] && [[ -f $(/usr/bin/which vivid) ]] ;then
+#  export LS_COLORS="$(vivid generate gruvbox-dark-hard)"
+#fi
 
-### aliases ###
-if [ -f "$HOME"/.bash_aliases ]; then
-    . "$HOME"/.bash_aliases
-fi
-### bash_completion ###
+#### bash_completion block
 if [[ -d /etc/bash_completion.d/ ]];then
   for file in /etc/bash_completion.d/* ; do
-  . ${file}
+  . ${file} 2>/dev/null
   done
 fi
 unset file
@@ -58,20 +57,3 @@ shopt -s autocd # переход в нужную папку без команд�
 shopt -s direxpand # расширяет переменные среды по нажатию Tab
 shopt -s checkjobs # параметр останавливает выход из сеанса, если в фоновом режиме ещё выполняются задания
 shopt -s histverify # Опция histverify позволяет сначала посмотреть, как Bash интерпретирует команду до того, как он на самом деле запустится
-
-### FZF show hidden filesvim 
-export FZF_DEFAULT_COMMAND="find -L"
-#export FZF_DEFAULT_OPTS='--no-height --no-reverse'
-export FZF_CTRL_R_OPTS='--sort --exact'
-export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
-
-
-### FZF systemctl
-if [[ -f "$HOME"/.fuzzy-sys.plugin.sh ]];then
-  . "$HOME"/.fuzzy-sys.plugin.sh
-fi
-
-### FZF keybindings
-if [[ -f "$HOME"/.config/fzf/key-bindings.bash ]];then
-  . "$HOME"/.config/fzf/key-bindings.bash
-fi

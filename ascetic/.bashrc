@@ -1,16 +1,20 @@
 export EDITOR="/usr/bin/vim"
 export PATH=$PATH:/usr/local/bin/
-#export PS1='\n[\u@\H] \A \w \$'
 
+##### CUSTOM PS1
+#export PS1='\n[\u@\H] \A \w \$' - внутри зашита эта строка
+# \[\e[1;32m\] - open tag
+# \[\e[m\]     - close tag
 if [ $(id -u) -eq 0 >/dev/null  2>&1 ]; then
-  PS1='\n[\[\e[1;31m\]\u@\H\[\e[m\]] \A [\w] \[\e[1;33m\]\$ \[\e[m\]'
+  export PS1='\n[\[\e[1;31m\]\u@\H\[\e[m\]] \A \[\e[1;36m\][\w]\[\e[m\] \[\e[1;33m\]\$ \[\e[m\]'
 else
-  PS1='\n[\[\e[1;32m\]\u@\H\[\e[m\]] \A [\w] \[\e[1;33m\]\$ \[\e[m\]'
+  export PS1='\n[\[\e[1;32m\]\u@\H\[\e[m\]] \A \[\e[1;36m\][\w]\[\e[m\] \[\e[1;33m\]\$ \[\e[m\]'
 fi
 
-
+#### bash_aliases block
 [ -f "$HOME"/.bash_aliases ] && . "$HOME"/.bash_aliases
 
+#### LSCOLORS block
 LSCOLORS=/usr/local/bin/lscolors
 VIVID=/usr/local/bin/vivid
 if [[ -f "${LSCOLORS}" ]] && [[ -f "${VIVID}" ]] ;then
@@ -23,6 +27,7 @@ unset LSCOLORS VIVID
 #  export LS_COLORS="$(vivid generate gruvbox-dark-hard)"
 #fi
 
+#### bash_completion block
 if [[ -d /etc/bash_completion.d/ ]];then
   for file in /etc/bash_completion.d/* ; do
   . ${file} 2>/dev/null
