@@ -105,6 +105,12 @@ if [[ "${OS_VER}" == "centos" ]] || [[ "${OS_VER}" == "rocky" ]]; then
   repeat "-"
 fi
 
+if [[ "${OS_VER}" == "ubuntu" ]] || [[ "${OS_VER}" == "debian" ]]; then
+  echo -ne "${GREY}UFW status:${NOFORMAT}\n"
+  ufw status
+  repeat "-"
+fi
+
 ### unset vars block
 unset BLACK RED GREEN YELLOW BLUE MAGENTA CYAN GREY PURPLE ORANGE DATEN\
  LOAD1 LOAD5 LOAD15 uptime upDays upHours upMins upSecs root_usage\
