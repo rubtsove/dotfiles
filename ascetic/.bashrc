@@ -1,6 +1,6 @@
 export EDITOR="/usr/bin/vim"
 export PATH=$PATH:/usr/local/bin/
-export PS1='\n[\u@\H] \A \w \$'
+export PS1='\n[\u@\H] \A \w \$ '
 
 ##### CUSTOM PS1
 #export PS1='\n[\u@\H] \A \w \$' - внутри зашита эта строка
